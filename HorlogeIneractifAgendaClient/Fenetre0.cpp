@@ -1093,7 +1093,7 @@ void MaFenetre::tempLireEtEnvoieDebit()
                           {
                               m_debit=QString::number(vitesse/1024.0);
                               m_debit=m_debit.split(".").at(0)+"."+m_debit.split(".").at(1).mid(0,2);//pour eviter d'afficher trop de chiffre, on ne prend que 2 chiffre apre la ","
-
+                              m_debit+="M";
                           }
                         }
             catch( std::exception e)
