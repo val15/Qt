@@ -292,7 +292,7 @@ void MaFenetre::activerLesWidgetsConfig()
 
 void MaFenetre::traiterMessagServeur(QString msg)
 {
-    qDebug() << m_debit << endl;
+    //qDebug() << m_debit << endl;
     m_debit=msg;
 
 }
