@@ -15,6 +15,8 @@ MaFenetre::MaFenetre() : QWidget()
     m_portArd0="ttyACM0";
     m_portArd1="ttyACM1";
 
+    m_debit="0k";
+
 
     m=0;
     pas=40;
@@ -265,6 +267,7 @@ void MaFenetre::repondreAuRequete(QStringList rqt,int indiceEnvoyeur,int typeDuS
    else if(type=="debit")
    {
       // qDebug() << "BIEN DEBIT : " << rqt.at(1) <<endl;
+        m_debit=rqt.at(1);
        m_serveur->envoyerATous(type+"#"+rqt.at(1));
        m_serveurAndroid->envoyerATous(type+"#"+rqt.at(1));
       // m_serveur->env
@@ -276,7 +279,7 @@ void MaFenetre::repondreAuRequete(QStringList rqt,int indiceEnvoyeur,int typeDuS
 
 void MaFenetre::deconnectionClient()
 {
-
+    m_debit="0k";
 }
 
 //pour arduinoSerieHorlogeIneractif
@@ -1451,7 +1454,7 @@ void MaFenetre::temp()
 
 
 
-    envoyerText("timeDate="+m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")+"/"+a+"*"+etatUneHeur+"+"+lancherAlarm+"<"+m_etindreAlrme+">"+m_etatClignotement+"~"+m_messageAEnvoyer+"%"+"0k"+"\\"+m_peutDEspace+"{"+m_etatVitesse+"}"+m_etatEspace+"");
+    envoyerText("timeDate="+m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")+"/"+a+"*"+etatUneHeur+"+"+lancherAlarm+"<"+m_etindreAlrme+">"+m_etatClignotement+"~"+m_messageAEnvoyer+"%"+m_debit+"\\"+m_peutDEspace+"{"+m_etatVitesse+"}"+m_etatEspace+"");
 
 
     m++;

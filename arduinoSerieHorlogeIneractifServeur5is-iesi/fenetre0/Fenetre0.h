@@ -150,6 +150,7 @@ Q_OBJECT
     QString m_etatVitesse;
     QString m_etatEspace;
     QString m_peutDEspace;
+   QString m_debit;
 
    //pour le serveur
     Serveur *m_serveur;
