@@ -292,8 +292,9 @@ void MaFenetre::activerLesWidgetsConfig()
 
 void MaFenetre::traiterMessagServeur(QString msg)
 {
+    qDebug() << m_debit << endl;
     m_debit=msg;
-   // qDebug() << m_debit << endl;
+
 }
 
 void MaFenetre::deconnectionClient()
@@ -460,6 +461,7 @@ void MaFenetre::lectureDesConfig(QStringList lstConfig)//11-01-21
 
 void MaFenetre::traiterDebit(QStringList rep)
 {
+    qDebug() << rep << endl;
     QString debit=rep.at(1);
     mLbDebit->setText(debit);
 }
