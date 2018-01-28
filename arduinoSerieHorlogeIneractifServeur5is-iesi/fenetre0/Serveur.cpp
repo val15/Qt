@@ -77,8 +77,8 @@ void Serveur::donneesRecues()
         else
             i++;
     }
-    qDebug() << "message recu : "  << message << endl;
-    qDebug() << "indice de l'envoyeur' : "  << indiceDeLEnvoyeur << endl;
+   // qDebug() << "message recu : "  << message << endl;
+ //   qDebug() << "indice de l'envoyeur' : "  << indiceDeLEnvoyeur << endl;
 
     emmetreMessageRecu(message,indiceDeLEnvoyeur,typeDuServeur);
 

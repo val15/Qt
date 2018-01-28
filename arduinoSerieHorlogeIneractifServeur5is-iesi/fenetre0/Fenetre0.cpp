@@ -218,7 +218,7 @@ void MaFenetre::traiterMessagServeur(QString msg,int indiceEnvoyeur,int typeDuSe
 void MaFenetre::repondreAuRequete(QStringList rqt,int indiceEnvoyeur,int typeDuSeveur)
 {
 
-    qDebug() << rqt << endl;
+   // qDebug() << rqt << endl;
     QString type=rqt.at(0);
     if(type=="demandeDatesImportantesDuMois")
     {
@@ -274,10 +274,8 @@ void MaFenetre::repondreAuRequete(QStringList rqt,int indiceEnvoyeur,int typeDuS
 
    else if(type=="debit")
    {
-      // qDebug() << "BIEN DEBIT : " << rqt.at(1) <<endl;
-        m_debit=rqt.at(1);
-       m_serveur->envoyerATous(type+"#"+rqt.at(1));
-       m_serveurAndroid->envoyerATous(type+"#"+rqt.at(1));
+
+      TraiterDebit(rqt.at(1));
       // m_serveur->env
    }
 
@@ -1591,6 +1589,27 @@ void MaFenetre::synchroniserHeure(QString dateHeure)
   QProcess process;
   process.start (commandLine);
   process.waitForFinished ();
+}
+
+void MaFenetre::TraiterDebit(QString sdebit)
+{
+    // qDebug() << "debit avant traitement : " << sdebit <<endl;
+     int intDebit = sdebit.toInt();
+     if(intDebit<1024)
+         m_debit=QString::number(intDebit)+"K";
+     else
+     {
+         double doubleDebit = sdebit.toInt()/1024.0;
+         QString sdebit=QString::number(doubleDebit);
+         sdebit=sdebit.split(".").at(0)+"."+sdebit.split(".").at(1).mid(0,2);//pour eviter d'afficher trop de chiffre, on ne prend que 2 chiffre apre la ","
+       //  m_debit=m_debit.split(".").at(0)+"."+m_debit.split(".").at(1).mid(0,2);//pour eviter d'afficher trop de chiffre, on ne prend que 2 chiffre apre la ","
+
+         m_debit=sdebit+"M";
+     }
+      //qDebug() << "debit apres traitement : " << m_debit <<endl;
+   // m_debit=rqt.at(1);
+    m_serveur->envoyerATous("debit#"+m_debit);
+    m_serveurAndroid->envoyerATous("debit#"+m_debit);
 }
 
 void MaFenetre::miseMA38()

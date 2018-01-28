@@ -28,7 +28,7 @@ Q_OBJECT
     void activerAllumAuto();
 
     void synchroniserHeure(QString dateHeure);
-
+    void TraiterDebit(QString sdebit);
 
 
 
