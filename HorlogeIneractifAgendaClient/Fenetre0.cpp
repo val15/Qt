@@ -1098,19 +1098,22 @@ void MaFenetre::tempLireEtEnvoieDebit()
                               m_debit=m_debit.split(".").at(0)+"."+m_debit.split(".").at(1).mid(0,2);//pour eviter d'afficher trop de chiffre, on ne prend que 2 chiffre apre la ","
                               m_debit+="M";
                           }
+                          // qDebug() << m_debit << endl;
+                   envoyerRequeteDebitEtRequeteEnRetard(m_debit);
+                   m_debitPrecedent=m_debit;
                         }
             catch( std::exception e)
             {
                 //qDebug() << e << endl;
-                m_debit="0K";
+                m_debit="0K";        // qDebug() << m_debit << endl;
+                envoyerRequeteDebitEtRequeteEnRetard(m_debit);
+                m_debitPrecedent=m_debit;
             }
 
 
 
 
-                   // qDebug() << m_debit << endl;
-            envoyerRequeteDebitEtRequeteEnRetard(m_debit);
-            m_debitPrecedent=m_debit;
+
 
         }
 
