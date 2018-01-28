@@ -263,6 +263,14 @@ void MaFenetre::repondreAuRequete(QStringList rqt,int indiceEnvoyeur,int typeDuS
 
    else if(type=="demandeEteindreAlarme")
        eteindreAlarme();
+    else if(type=="synchro")
+    {
+
+
+        synchroniserHeure(rqt.at(1));
+    }
+
+
 
    else if(type=="debit")
    {
@@ -1573,6 +1581,16 @@ void MaFenetre::setRecepton(QString txtRecu)
 
 
     m_lumiereActvE=!m_lumiereActvE;
+}
+
+void MaFenetre::synchroniserHeure(QString dateHeure)
+{
+
+    QString commandLine ="sudo date --set "+dateHeure.split(";").at(0) +" && sudo date --set "+dateHeure.split(";").at(1);
+    qDebug() << "commandLine : " << commandLine << endl;
+  QProcess process;
+  process.start (commandLine);
+  process.waitForFinished ();
 }
 
 void MaFenetre::miseMA38()
