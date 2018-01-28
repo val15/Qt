@@ -286,8 +286,8 @@ void MaFenetre::repondreAuRequete(QStringList rqt,int indiceEnvoyeur,int typeDuS
 void MaFenetre::deconnectionClient()
 {
     m_debit="0k";
-    m_serveur->envoyerATous("debit#0K");
-    m_serveurAndroid->envoyerATous("debit#0K");
+   // m_serveur->envoyerATous("debit#0K");
+   // m_serveurAndroid->envoyerATous("debit#0K");
 }
 
 //pour arduinoSerieHorlogeIneractif
