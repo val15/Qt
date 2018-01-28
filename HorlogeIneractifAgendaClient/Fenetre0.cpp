@@ -1090,14 +1090,14 @@ void MaFenetre::tempLireEtEnvoieDebit()
 
 
 
-                          if(vitesse<1024)
-                              m_debit= QString::number(vitesse)+"K";
-                          else if(vitesse>=1024)
+
+                              m_debit= QString::number(vitesse);
+                          /*else if(vitesse>=1024)
                           {
                               m_debit=QString::number(vitesse/1024.0);
                               m_debit=m_debit.split(".").at(0)+"."+m_debit.split(".").at(1).mid(0,2);//pour eviter d'afficher trop de chiffre, on ne prend que 2 chiffre apre la ","
                               m_debit+="M";
-                          }
+                          }*/
                           // qDebug() << m_debit << endl;
                    envoyerRequeteDebitEtRequeteEnRetard(m_debit);
                    m_debitPrecedent=m_debit;
@@ -1105,7 +1105,7 @@ void MaFenetre::tempLireEtEnvoieDebit()
             catch( std::exception e)
             {
                 //qDebug() << e << endl;
-                m_debit="0K";        // qDebug() << m_debit << endl;
+                m_debit="0";        // qDebug() << m_debit << endl;
                 envoyerRequeteDebitEtRequeteEnRetard(m_debit);
                 m_debitPrecedent=m_debit;
             }
