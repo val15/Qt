@@ -27,6 +27,8 @@ Q_OBJECT
     void desactiverAllumAuto();
     void activerAllumAuto();
 
+    void synchroniserHeure(QString dateHeure);
+
 
 
 

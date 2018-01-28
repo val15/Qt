@@ -110,6 +110,7 @@ void Serveur::deconnexionClient()
         }
     }
     socket->deleteLater();
+    emmetreDeconnecionClient();
 }
 
 void Serveur::envoyerAUn(const QString &message,int indiceDuReceveur)//doit etre à 64 bit

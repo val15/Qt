@@ -95,6 +95,7 @@ void ServeurAndroid::deconnexionClient()
         }
     }
     socket->deleteLater();
+    emmetreDeconnecionClient();
 
 
 }
