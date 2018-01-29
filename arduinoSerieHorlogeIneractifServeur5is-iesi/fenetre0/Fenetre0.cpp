@@ -1584,11 +1584,17 @@ void MaFenetre::setRecepton(QString txtRecu)
 void MaFenetre::synchroniserHeure(QString dateHeure)
 {
 
-    QString commandLine ="sudo date --set "+dateHeure.split(";").at(0) +" && sudo date --set "+dateHeure.split(";").at(1);
+    QString commandLine ="sudo date --set "+dateHeure.split(";").at(0);
     qDebug() << "commandLine : " << commandLine << endl;
   QProcess process;
   process.start (commandLine);
   process.waitForFinished ();
+
+  commandLine ="sudo date --set "+dateHeure.split(";").at(1);
+  qDebug() << "commandLine : " << commandLine << endl;
+     process;
+    process.start (commandLine);
+    process.waitForFinished ();
 }
 
 void MaFenetre::TraiterDebit(QString sdebit)
