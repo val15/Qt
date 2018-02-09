@@ -74,7 +74,7 @@ void ServeurAndroid::donneesRecues()
 
 void ServeurAndroid::deconnexionClient()
 {
-    qDebug() << QString::fromUtf8("Un client vient de se dconnecter");
+    qDebug() << QString::fromUtf8("Un client vient android de se dconnecter");
 
     // On dtermine quel client se dconnecte
     QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
@@ -83,7 +83,7 @@ void ServeurAndroid::deconnexionClient()
 
 
 
-    if(!lstClient.isEmpty())
+    /*if(!lstClient.isEmpty())
     {
         QList<QTcpSocket *> ::iterator it;
         int i(0);
@@ -93,7 +93,7 @@ void ServeurAndroid::deconnexionClient()
                 lstClient.removeAt(i);
             i++;
         }
-    }
+    }*/
     socket->deleteLater();
     emmetreDeconnecionClient();
 

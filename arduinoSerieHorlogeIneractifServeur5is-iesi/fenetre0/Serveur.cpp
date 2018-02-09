@@ -98,7 +98,7 @@ void Serveur::deconnexionClient()
 
     //emmetreDeconnecionClient();
 
-    if(!lstClient.isEmpty())
+   /* if(!lstClient.isEmpty())
     {
         QList<QTcpSocket *> ::iterator it;
         int i(0);
@@ -108,7 +108,7 @@ void Serveur::deconnexionClient()
                 lstClient.removeAt(i);
             i++;
         }
-    }
+    }*/
     socket->deleteLater();
     emmetreDeconnecionClient();
 }
