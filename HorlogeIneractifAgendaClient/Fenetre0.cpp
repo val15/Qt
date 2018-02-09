@@ -31,6 +31,11 @@ MaFenetre::MaFenetre() : QWidget()
     m_peutDEspace="f";
 
 
+    //timer pour le connexion permanat
+    m_timerConnexion=new QTimer;
+    m_timerConnexion->start(1000);
+    connect(m_timerConnexion,SIGNAL(timeout()),this,SLOT(connexion()));
+
     //pour la connexion au serveur
     m_layoutConnexion=new QGridLayout;
     m_leAdressIpServeur=new QLineEdit;
@@ -176,7 +181,8 @@ MaFenetre::MaFenetre() : QWidget()
     connect(m_btAjouterEvenement, SIGNAL(clicked()), this, SLOT(ajouterEvenement()));//lis les dade important du mois courant pour les colorer;
 
     //pour la connexion
-    connect(m_btConnexion , SIGNAL(clicked()), this,SLOT(connexion()));
+  //  connect(m_btConnexion , SIGNAL(clicked()), this,SLOT(connexion()));
+
 
 
 
@@ -758,7 +764,12 @@ void MaFenetre::envoyerRequeteEteindreAlarme()
 //Slot pour le click sur le bouton de connexion
 void MaFenetre::connexion()
 {
+
+
     ecrirConfigLocal();
+
+    //lancer le timer pour que la connection se fasse tout le temps
+
     //on coche > connexion
     if(!m_estConnecter)
     {
@@ -950,12 +961,14 @@ void MaFenetre::clientDonneesRecues(QString msg)
 void MaFenetre::connectionAuServeurReussit()
 {
     activerToutLesAutresWidgets();
+    m_estConnecter=true;
 }
 
 void MaFenetre::deconnectionDuServeur()
 {
     desactiverToutLesAutresWidgets();
     desactiverLesWidgetsConfig();
+    m_estConnecter=false;
 }
 
 void MaFenetre::chargerConfiguration()

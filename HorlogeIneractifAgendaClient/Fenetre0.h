@@ -76,6 +76,10 @@ Q_OBJECT
     QPushButton *m_btChargerConfiguration;
     bool m_configChargE;
 
+
+    //timerToutLeTemps
+    QTimer *m_timerConnexion;
+
     //pour l'horloge
     //QPushButton *m_bt_apropo;//on ceer un atribu de type QPushButton s'est un pointeur
     QLabel *m_lb_typeDebit;
