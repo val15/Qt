@@ -68,7 +68,6 @@ Q_OBJECT
     QString m_adresseIpServeur;
     QString m_port;
     ClientTcpSocket *m_clientTcp;
-    ClientTcpSocket *m_clientTcpDebit;
 
 
 

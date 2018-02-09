@@ -33,8 +33,8 @@ MaFenetre::MaFenetre() : QWidget()
 
     //timer pour le connexion permanat
     m_timerConnexion=new QTimer;
-    m_timerConnexion->start(1000);
-    connect(m_timerConnexion,SIGNAL(timeout()),this,SLOT(connexion()));
+  //  m_timerConnexion->start(1000);
+   // connect(m_timerConnexion,SIGNAL(timeout()),this,SLOT(connexion()));
 
     //pour la connexion au serveur
     m_layoutConnexion=new QGridLayout;
@@ -181,7 +181,7 @@ MaFenetre::MaFenetre() : QWidget()
     connect(m_btAjouterEvenement, SIGNAL(clicked()), this, SLOT(ajouterEvenement()));//lis les dade important du mois courant pour les colorer;
 
     //pour la connexion
-  //  connect(m_btConnexion , SIGNAL(clicked()), this,SLOT(connexion()));
+    connect(m_btConnexion , SIGNAL(clicked()), this,SLOT(connexion()));
 
 
 
@@ -230,6 +230,16 @@ MaFenetre::MaFenetre() : QWidget()
    // resize(300,115);
    // setW
     MaFenetre::setWindowTitle("horloge interracif client");
+
+
+    //pour la connexion au serveur
+    m_adresseIpServeur=m_leAdressIpServeur->text();
+    m_port=m_lePort->text();
+    m_clientTcp=new ClientTcpSocket(m_adresseIpServeur,m_port);
+    connect(m_clientTcp, SIGNAL(emmetreMessageRecu(QString)), this, SLOT(clientDonneesRecues(QString)));
+    connect(m_clientTcp, SIGNAL(emmetreConnecE()), this, SLOT(connectionAuServeurReussit()));
+    connect(m_clientTcp, SIGNAL(emmetreDeconnection()), this, SLOT(deconnectionDuServeur()));
+
 }
 
 void MaFenetre::desactiverToutLesAutresWidgets()
@@ -634,6 +644,8 @@ void MaFenetre::ajouterEvenement()
     connect(m_btAjoutEnregister , SIGNAL(clicked()), fenetreAjouter,SLOT(accept()));
    // connect(fenetreAjouter , SIGNAL(rejected()), this,SLOT(envoyerRequeteDemanderDateImportantesDuMois()));
 
+
+
 }
 
 void MaFenetre::selectionTypeEvenement(QString texte)
@@ -768,24 +780,12 @@ void MaFenetre::connexion()
 
     ecrirConfigLocal();
 
-    //lancer le timer pour que la connection se fasse tout le temps
+   // m_clientTcp=NULL;
 
     //on coche > connexion
     if(!m_estConnecter)
     {
-        //ecrirConfig();
-        m_adresseIpServeur=m_leAdressIpServeur->text();
-        m_port=m_lePort->text();
-        //pour la conexion avec le server
-        m_clientTcp=new ClientTcpSocket(m_adresseIpServeur,m_port);
-       // m_clientTcpDebit=new ClientTcpSocket(m_adresseIpServeur,"7115");
-        connect(m_clientTcp, SIGNAL(emmetreMessageRecu(QString)), this, SLOT(clientDonneesRecues(QString)));
-        connect(m_clientTcp, SIGNAL(emmetreConnecE()), this, SLOT(connectionAuServeurReussit()));
-        connect(m_clientTcp, SIGNAL(emmetreDeconnection()), this, SLOT(deconnectionDuServeur()));
-      /*  connect(m_clientTcpDebit, SIGNAL(emmetreMessageRecu(QString)), this, SLOT(clientDonneesRecues(QString)));
-        connect(m_clientTcpDebit, SIGNAL(emmetreConnecE()), this, SLOT(connectionAuServeurReussit()));
-        connect(m_clientTcpDebit, SIGNAL(emmetreDeconnection()), this, SLOT(deconnectionDuServeur()));*/
-       // connect(m_socket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(erreurSocket(QAbstractSocket::SocketError)));
+
 
 
 
@@ -796,20 +796,12 @@ void MaFenetre::connexion()
         else
         {
             m_clientTcp->connexionAuServeur();
-         //   m_clientTcpDebit->connexionAuServeur();
-            //on demande les evenement du mois en cour
-            //les requettes entre le cient et le serveur seras tjrs sous forme de tableau avec l'indice 0 le type
             envoyerRequeteDemanderDateImportantesDuMois(QDate::currentDate().toString("yyyy").toInt(),QDate::currentDate().toString("MM").toInt());
            // envoyerRequeteDemandeDesEvenementsDuJour(QDate::currentDate());//il faut eviter les requettes succesives
             m_timerDebit->start(1000);
             connect(m_timerDebit,SIGNAL(timeout()),this,SLOT(tempLireEtEnvoieDebit()));
         }
 
-
-
-    }
-    else
-    {
 
 
     }
@@ -960,15 +952,28 @@ void MaFenetre::clientDonneesRecues(QString msg)
 
 void MaFenetre::connectionAuServeurReussit()
 {
+    m_btConnexion->setText("Deconnexion");
     activerToutLesAutresWidgets();
     m_estConnecter=true;
+  //  m_timerConnexion->stop();
+   // m_timerConnexion=NULL;
 }
 
 void MaFenetre::deconnectionDuServeur()
 {
+    m_btConnexion->setText("Connexion");
     desactiverToutLesAutresWidgets();
     desactiverLesWidgetsConfig();
     m_estConnecter=false;
+  //  m_timerConnexion=new QTimer;
+   // m_timerConnexion->start(1000);
+   // connect(m_timerConnexion,SIGNAL(timeout()),this,SLOT(connexion()));
+  //m_clientTcp=NULL;
+  //sleep(1000);
+   // m_clientTcp->close();
+    //connexion();
+
+
 }
 
 void MaFenetre::chargerConfiguration()
