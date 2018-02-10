@@ -1396,7 +1396,7 @@ void MaFenetre::temp()
     else
         a="d";
 
-    bool alarmMarche=false;
+    bool autresEvenementsMarches=false;
     QString lancherAlarm;
     if(m_chbAlarme->isChecked())
     {
@@ -1406,7 +1406,7 @@ void MaFenetre::temp()
             //m_etindreAlrme="a";
             m_arduinoCommande->envoyerText("alarm");
             qDebug() << "alarm" << endl;
-            alarmMarche=true;
+            autresEvenementsMarches=true;
 
         }
     }
@@ -1415,9 +1415,40 @@ void MaFenetre::temp()
         //lancherAlarm="d";
     }
 
+
+
+
+
+    if(m_chbExtinctionAutomatque->isChecked() && m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")==m_tieExtinctionAutomatque->time().toString("HH:mm:ss"))
+    {
+        qDebug() << "extinction des feux" << m_messageAEnvoyer  << endl;
+        m_arduinoCommande->envoyerText("toutEtindre");
+        autresEvenementsMarches=true;
+    }
+
+
+
+    //allume auto
+    if(m_chbAllumAutomatque->isChecked() && m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")==m_tieAllumAutomatque->time().toString("HH:mm:ss"))
+    {
+       // qDebug() << "PLUS = " << m_tieAllumAutomatque->dateTime().addSecs(1).toString("HH:mm:ss") << endl;
+        activerAllumAuto();
+        autresEvenementsMarches=true;
+    }
+    if(m_chbAllumAutomatque->isChecked() && m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")==m_tieAllumAutomatque->dateTime().addSecs(1).toString("HH:mm:ss"))//desactivation de l'allumge auto
+    {
+         //qDebug() << "DESCT = " << m_tieAllumAutomatque->dateTime().addSecs(1).toString("HH:mm:ss") << endl;
+
+        desactiverAllumAuto();
+        autresEvenementsMarches=true;
+    }
+
+
+
+
     if(m_dateTempsActuel->currentDateTime().toString("mm:ss")=="00:00" )
      {
-        if(!alarmMarche)
+        if(!autresEvenementsMarches)
         {
             m_arduinoCommande->envoyerText("bip");
             qDebug() << "bip" << endl;
@@ -1425,25 +1456,6 @@ void MaFenetre::temp()
         else
             qDebug() << "not bip" << endl;
     }
-
-
-    if(m_chbExtinctionAutomatque->isChecked())
-    {
-        if(m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")==m_tieExtinctionAutomatque->time().toString("HH:mm:ss"))
-        {
-            qDebug() << "extinction des feux" << m_messageAEnvoyer  << endl;
-            m_arduinoCommande->envoyerText("toutEtindre");
-        }
-
-    }
-
-    //allume auto
-    if(m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")==m_tieAllumAutomatque->time().toString("HH:mm:ss"))
-        activerAllumAuto();
-    if(m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")=="20:00:00")//desactivation de l'allumge auto
-        desactiverAllumAuto();
-
-
 
    // else
        // etatUneHeur="d";
