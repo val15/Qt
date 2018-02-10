@@ -95,22 +95,35 @@ void Serveur::deconnexionClient()
         return;
 
 
-
-    //emmetreDeconnecionClient();
-
-   /* if(!lstClient.isEmpty())
+    try
     {
-        QList<QTcpSocket *> ::iterator it;
-        int i(0);
-        for(it=lstClient.begin();it!=lstClient.end();++it)
+        if(!lstClient.isEmpty())
         {
-            if(lstClient.at(i)== socket);
-                lstClient.removeAt(i);
-            i++;
+            QList<QTcpSocket *> ::iterator it;
+            int i(0);
+            for(it=lstClient.begin();it!=lstClient.end();++it)
+            {
+                if(lstClient.at(i)== socket);
+                    lstClient.removeAt(i);
+                i++;
+            }
         }
-    }*/
-    socket->deleteLater();
-    emmetreDeconnecionClient();
+
+    } catch (...)
+    {
+        qDebug() << "EXEPTION QUIT LIST" << endl;
+    }
+
+    try
+    {
+
+        socket->deleteLater();
+        emmetreDeconnecionClient();
+
+    } catch (...)
+    {
+        qDebug() << "EXEPTION DELETE" << endl;
+    }
 }
 
 void Serveur::envoyerAUn(const QString &message,int indiceDuReceveur)//doit etre à 64 bit
