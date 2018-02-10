@@ -65,7 +65,7 @@ MaFenetre::MaFenetre() : QWidget()
 
     m_layoutCommande=new QGridLayout;
     m_btPrise=new QPushButton("activer prise");
-    m_btLumiere=new QPushButton("allumer lumière");
+
 
     m_chbAllumAutomatque=new QCheckBox("allumage automatique à :");
     m_tieAllumAutomatque=new QTimeEdit;
@@ -81,8 +81,9 @@ MaFenetre::MaFenetre() : QWidget()
    /* m_chbAllumAutomatque->setEnabled(false);
     m_chbExtinctionAutomatque->setEnabled(false);*/
     m_btPrise->setEnabled(false);
-    m_btLumiere->setEnabled(false);
     m_btLumiere=new QPushButton("allumer lumière");
+    m_btLumiere->setEnabled(false);
+
 
     m_layoutAlarme->addWidget(m_lbReveil,0,0);
     m_layoutAlarme->addWidget(m_tieSelectionReveille,0,1);
@@ -1337,6 +1338,8 @@ void MaFenetre::actiVOuDesactiVClignotement()
 
 void MaFenetre::temp()
 {
+
+
     if(m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")=="10:00:10")
         lireEvenementDuJourEtProch1();
 
@@ -1383,6 +1386,7 @@ void MaFenetre::temp()
 
 
 
+   QString etatUneHeur="d";
 
 
 
@@ -1392,19 +1396,37 @@ void MaFenetre::temp()
     else
         a="d";
 
+    bool alarmMarche=false;
     QString lancherAlarm;
     if(m_chbAlarme->isChecked())
     {
         if(m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")==m_tieSelectionReveille->time().toString("HH:mm:ss"))
         {
-            lancherAlarm="a";
-            m_etindreAlrme="a";
+            //lancherAlarm="a";
+            //m_etindreAlrme="a";
+            m_arduinoCommande->envoyerText("alarm");
+            qDebug() << "alarm" << endl;
+            alarmMarche=true;
+
         }
     }
     else
     {
-        lancherAlarm="d";
+        //lancherAlarm="d";
     }
+
+    if(m_dateTempsActuel->currentDateTime().toString("mm:ss")=="00:00" )
+     {
+        if(!alarmMarche)
+        {
+            m_arduinoCommande->envoyerText("bip");
+            qDebug() << "bip" << endl;
+        }
+        else
+            qDebug() << "not bip" << endl;
+    }
+
+
     if(m_chbExtinctionAutomatque->isChecked())
     {
         if(m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")==m_tieExtinctionAutomatque->time().toString("HH:mm:ss"))
@@ -1421,11 +1443,10 @@ void MaFenetre::temp()
     if(m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")=="20:00:00")//desactivation de l'allumge auto
         desactiverAllumAuto();
 
-    QString etatUneHeur="d";
-    if(m_dateTempsActuel->currentDateTime().toString("mm:ss")=="00:00")
-        etatUneHeur="a";
-    else
-        etatUneHeur="d";
+
+
+   // else
+       // etatUneHeur="d";
 
     //pour les calendrier
     if(m>=0&&m<pas)
@@ -1454,7 +1475,7 @@ void MaFenetre::temp()
             m_messageAEnvoyer=m_lstEvenementAEnvoyer.at(c);
         p++;
     }
-  //  qDebug() << "m= " << m <<" ;ev du jour " << m_messageAEnvoyer  << endl;
+   // qDebug() << "m= " << m <<" ;ev du jour " << m_messageAEnvoyer  << endl;
 
 
     if(m>=pas*6)
@@ -1517,6 +1538,7 @@ void MaFenetre::actiVOueteindrePrise()
 
 void MaFenetre::allumerOuEteindreLumiR()
 {
+
     if(m_lumiereActvE)
     {
         m_arduinoCommande->envoyerText("eteindreLumiere");
@@ -1534,7 +1556,9 @@ void MaFenetre::allumerOuEteindreLumiR()
 
 void MaFenetre::eteindreAlarme()
 {
-    m_etindreAlrme="d";//pour eteindre l'alarme
+
+   // m_etindreAlrme="d";
+    m_arduinoCommande->envoyerText("finAl");//pour eteindre l'alarme
 }
 
 
@@ -1572,7 +1596,8 @@ void MaFenetre::setRecepton(QString txtRecu)
     if(txtRecu.contains("ttyACM1:a"))
     {
        //m_btActiverAllumAutomatque->setText("activer allumage automatisue");
-        m_etindreAlrme="d";//pour eteindre l'alarme
+       // m_etindreAlrme="d";
+        m_arduinoCommande->envoyerText("alarm");//pour eteindre l'alarme
 
 
     }
