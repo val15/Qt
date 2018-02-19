@@ -115,10 +115,20 @@ void ServeurAndroid::deconnexionClient()
 
 
 }
+QList<QTcpSocket *> ServeurAndroid::getLstClient() const
+{
+    return lstClient;
+}
+
+void ServeurAndroid::setLstClient(const QList<QTcpSocket *> &value)
+{
+    lstClient = value;
+}
+
 
 void ServeurAndroid::envoyerAUn(const QString &message,int indiceDuReceveur)//doit etre à 64 bit
 {
- /*   QByteArray paquet;//pour stoker le paquet en envoiyer sur le rseau
+    /*   QByteArray paquet;//pour stoker le paquet en envoiyer sur le rseau
     QDataStream out(&paquet, QIODevice::WriteOnly);//On utilise un QDataStream comme tout  l'heure pour crire dans le QByteArray facilementgr
     out << (quint32) 0; // On crit 0 au dbut du paquet pour rserver la place pour crire la taille
     out << message; // On ajoute le message  la suite

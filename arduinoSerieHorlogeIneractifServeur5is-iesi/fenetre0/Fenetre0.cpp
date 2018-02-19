@@ -5,7 +5,7 @@ MaFenetre::MaFenetre() : QWidget()
     //il faut installer bwm-ng
     //il faut que la base de donne contienne des donnes
     //il faut que les fichiers "heurReveille" et "etatReveille" existent et ne sont pas vide
-
+    //LIMITATION à UN CLIENT PAR SERVER
 
 
 
@@ -1637,22 +1637,33 @@ void MaFenetre::synchroniserHeure(QString dateHeure)
 void MaFenetre::TraiterDebit(QString sdebit)
 {
     // qDebug() << "debit avant traitement : " << sdebit <<endl;
-     int intDebit = sdebit.toInt();
-     if(intDebit<1024)
-         m_debit=QString::number(intDebit)+"K";
-     else
-     {
-         double doubleDebit = sdebit.toInt()/1024.0;
-         QString sdebit=QString::number(doubleDebit);
-         sdebit=sdebit.split(".").at(0)+"."+sdebit.split(".").at(1).mid(0,2);//pour eviter d'afficher trop de chiffre, on ne prend que 2 chiffre apre la ","
-       //  m_debit=m_debit.split(".").at(0)+"."+m_debit.split(".").at(1).mid(0,2);//pour eviter d'afficher trop de chiffre, on ne prend que 2 chiffre apre la ","
+    try
+    {
+        int intDebit = sdebit.toInt();
+        if(intDebit<1024)
+            m_debit=QString::number(intDebit)+"K";
+        else
+        {
+            double doubleDebit = sdebit.toInt()/1024.0;
+            QString sdebit=QString::number(doubleDebit);
+            sdebit=sdebit.split(".").at(0)+"."+sdebit.split(".").at(1).mid(0,2);//pour eviter d'afficher trop de chiffre, on ne prend que 2 chiffre apre la ","
+          //  m_debit=m_debit.split(".").at(0)+"."+m_debit.split(".").at(1).mid(0,2);//pour eviter d'afficher trop de chiffre, on ne prend que 2 chiffre apre la ","
 
-         m_debit=sdebit+"M";
-     }
-      //qDebug() << "debit apres traitement : " << m_debit <<endl;
-   // m_debit=rqt.at(1);
-    m_serveur->envoyerATous("debit#"+m_debit);
-    m_serveurAndroid->envoyerATous("debit#"+m_debit);
+            m_debit=sdebit+"M";
+        }
+         //qDebug() << "debit apres traitement : " << m_debit <<endl;
+      // m_debit=rqt.at(1);
+        if(!m_serveur->getLstClient().isEmpty())
+            m_serveur->envoyerAUn("debit#"+m_debit,m_serveur->getLstClient().lastIndexOf(m_serveur->getLstClient().last()));
+       if(!m_serveurAndroid->getLstClient().isEmpty())
+            m_serveurAndroid->envoyerAUn("debit#"+m_debit,m_serveurAndroid->getLstClient().lastIndexOf(m_serveurAndroid->getLstClient().last()));
+    }
+    catch(...)
+    {
+        qDebug() << "BUGUE DEBIT :(" <<endl;
+    }
+
+
 }
 
 void MaFenetre::miseMA38()

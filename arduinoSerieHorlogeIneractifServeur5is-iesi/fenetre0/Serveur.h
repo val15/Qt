@@ -24,7 +24,11 @@ class Serveur: public QWidget
             void envoyerATous(const QString &message);
             void lancement();
 
-        private slots:
+
+            QList<QTcpSocket *> getLstClient() const;
+            void setLstClient(const QList<QTcpSocket *> &value);
+
+private slots:
             void nouvelleConnexion();
             void donneesRecues();
             void deconnexionClient();

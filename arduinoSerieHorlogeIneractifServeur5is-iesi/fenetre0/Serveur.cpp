@@ -125,6 +125,16 @@ void Serveur::deconnexionClient()
         qDebug() << "EXEPTION DELETE" << endl;
     }
 }
+QList<QTcpSocket *> Serveur::getLstClient() const
+{
+    return lstClient;
+}
+
+void Serveur::setLstClient(const QList<QTcpSocket *> &value)
+{
+    lstClient = value;
+}
+
 
 void Serveur::envoyerAUn(const QString &message,int indiceDuReceveur)//doit etre à 64 bit
 {
