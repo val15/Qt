@@ -1118,6 +1118,7 @@ void MaFenetre::tempLireEtEnvoieDebit()
                           }*/
                           // qDebug() << m_debit << endl;
                    envoyerRequeteDebitEtRequeteEnRetard(m_debit);
+                   //mLbDebit->setText(m_debit);
                    m_debitPrecedent=m_debit;
                         }
             catch( std::exception e)
@@ -1125,6 +1126,7 @@ void MaFenetre::tempLireEtEnvoieDebit()
                 //qDebug() << e << endl;
                 m_debit="0";        // qDebug() << m_debit << endl;
                 envoyerRequeteDebitEtRequeteEnRetard(m_debit);
+              //  mLbDebit->setText(m_debit);
                 m_debitPrecedent=m_debit;
             }
 
