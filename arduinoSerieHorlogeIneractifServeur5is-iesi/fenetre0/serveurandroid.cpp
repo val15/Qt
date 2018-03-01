@@ -81,6 +81,7 @@ void ServeurAndroid::deconnexionClient()
     if (socket == 0) // Si par hasard on n'a pas trouv le client  l'origine du signal, on arrte la mthode
         return;
 
+//lstClient.clear();//puisq'un sue client
 
     try
     {

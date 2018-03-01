@@ -93,6 +93,7 @@ void Serveur::deconnexionClient()
     QTcpSocket *socket = qobject_cast<QTcpSocket *>(sender());
     if (socket == 0) // Si par hasard on n'a pas trouv le client  l'origine du signal, on arrte la mthode
         return;
+   // lstClient.clear();//puisq'un sue client
 
 
     try

@@ -289,6 +289,7 @@ void MaFenetre::deconnectionClient()
     m_debit="0k";
    // m_serveur->envoyerATous("debit#0K");
    // m_serveurAndroid->envoyerATous("debit#0K");
+    m_arduinoCommande->envoyerText("toutEtindre");
 }
 
 //pour arduinoSerieHorlogeIneractif
@@ -1639,7 +1640,7 @@ void MaFenetre::TraiterDebit(QString sdebit)
     // qDebug() << "debit avant traitement : " << sdebit <<endl;
     try
     {
-        int intDebit = sdebit.toInt();
+       /* int intDebit = sdebit.toInt();
         if(intDebit<1024)
             m_debit=QString::number(intDebit)+"K";
         else
@@ -1652,11 +1653,14 @@ void MaFenetre::TraiterDebit(QString sdebit)
             m_debit=sdebit+"M";
         }
          //qDebug() << "debit apres traitement : " << m_debit <<endl;
-      // m_debit=rqt.at(1);
+*/
+        m_debit=sdebit;
         if(!m_serveur->getLstClient().isEmpty())
-            m_serveur->envoyerAUn("debit#"+m_debit,m_serveur->getLstClient().lastIndexOf(m_serveur->getLstClient().last()));
-       if(!m_serveurAndroid->getLstClient().isEmpty())
-            m_serveurAndroid->envoyerAUn("debit#"+m_debit,m_serveurAndroid->getLstClient().lastIndexOf(m_serveurAndroid->getLstClient().last()));
+            //m_serveur->envoyerAUn("debit#"+m_debit,m_serveur->getLstClient().lastIndexOf(m_serveur->getLstClient().last()));
+            m_serveur->envoyerATous("debit#"+m_debit);
+        if(!m_serveurAndroid->getLstClient().isEmpty())
+           // m_serveurAndroid->envoyerAUn("debit#"+m_debit,m_serveurAndroid->getLstClient().lastIndexOf(m_serveurAndroid->getLstClient().last()));
+            m_serveurAndroid->envoyerATous("debit#"+m_debit);
     }
     catch(...)
     {
