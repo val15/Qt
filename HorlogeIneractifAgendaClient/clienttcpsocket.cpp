@@ -106,6 +106,7 @@ void ClientTcpSocket::clientDonneesRecues()
 
 void ClientTcpSocket::envoyerMessage(QString message)
 {
+     qDebug() << "Envoie message : " + message<< endl;
 
     QByteArray paquet;
     QDataStream out(&paquet, QIODevice::WriteOnly);
