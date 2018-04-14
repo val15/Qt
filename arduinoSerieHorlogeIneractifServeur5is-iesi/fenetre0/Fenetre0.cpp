@@ -1436,7 +1436,7 @@ void MaFenetre::temp()
         activerAllumAuto();
         autresEvenementsMarches=true;
     }
-    if(m_chbAllumAutomatque->isChecked() && m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")==m_tieAllumAutomatque->dateTime().addSecs(1).toString("HH:mm:ss"))//desactivation de l'allumge auto
+    if(m_chbAllumAutomatque->isChecked() && m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")==m_tieAllumAutomatque->dateTime().addSecs(360).toString("HH:mm:ss"))//desactivation de l'allumge auto
     {
          //qDebug() << "DESCT = " << m_tieAllumAutomatque->dateTime().addSecs(1).toString("HH:mm:ss") << endl;
 
@@ -1600,17 +1600,17 @@ void MaFenetre::setRecepton(QString txtRecu)
 {
 
     qDebug() << txtRecu << endl;
-    if(txtRecu.contains("ttyACM1:b"))
+    if(txtRecu.contains("ttyACM1:a"))
     {
         m_etatClignotement="d";//eteindre le clignotement
        // qDebug() << txtRecu << endl;
     }
 
-    if(txtRecu.contains("ttyACM1:a"))
+    if(txtRecu.contains("ttyACM1:b"))
     {
        //m_btActiverAllumAutomatque->setText("activer allumage automatisue");
        // m_etindreAlrme="d";
-        m_arduinoCommande->envoyerText("alarm");//pour eteindre l'alarme
+        //m_arduinoCommande->envoyerText("alarmFin");//pour eteindre l'alarme
 
 
     }
