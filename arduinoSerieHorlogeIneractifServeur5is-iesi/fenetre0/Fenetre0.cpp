@@ -39,7 +39,7 @@ MaFenetre::MaFenetre() : QWidget()
 
 
     m_etindreAlrme="d";//d activer l'etinte
-    m_etatClignotement="a";//a ou d
+    m_etatClignotementEtEclErage="a";//a ou d
     m_etatVitesse="d";
     m_etatEspace="a";
     m_allumAuto=false;
@@ -387,7 +387,7 @@ void MaFenetre::lireEvenementDuJourEtProch1()
                          else
                              m_evenementDuJour+=">>"+lstEvenement.at(c).at(3)+" ";//on le met dans l'evenneent du jour !!!
 
-                     //    m_etatClignotement="a";
+                     //    m_etatClignotementEtEclErage="a";
                      }
 
 
@@ -1321,13 +1321,13 @@ void MaFenetre::actiVOuDesactiVClignotement()
 {
     if(m_clignotementEstActivE)
     {
-        m_etatClignotement="d";
+        m_etatClignotementEtEclErage="d";
         m_btClignote->setText("activer clignotement");
 
     }
     else
     {
-        m_etatClignotement="a";
+        m_etatClignotementEtEclErage="a";
        m_btClignote->setText("désactiver clignotement");
     }
     m_clignotementEstActivE=!m_clignotementEstActivE;
@@ -1496,7 +1496,7 @@ void MaFenetre::temp()
 
 
 
-    envoyerText("timeDate="+m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")+"/"+a+"*"+etatUneHeur+"+"+lancherAlarm+"<"+m_etindreAlrme+">"+m_etatClignotement+"~"+m_messageAEnvoyer+"%"+m_debit+"\\"+m_peutDEspace+"{"+m_etatVitesse+"}"+m_etatEspace+"");
+    envoyerText("timeDate="+m_dateTempsActuel->currentDateTime().toString("HH:mm:ss")+"/"+a+"*"+etatUneHeur+"+"+lancherAlarm+"<"+m_etindreAlrme+">"+m_etatClignotementEtEclErage+"~"+m_messageAEnvoyer+"%"+m_debit+"\\"+m_peutDEspace+"{"+m_etatVitesse+"}"+m_etatEspace+"");
 
 
     m++;
@@ -1602,7 +1602,11 @@ void MaFenetre::setRecepton(QString txtRecu)
     qDebug() << txtRecu << endl;
     if(txtRecu.contains("ttyACM1:a"))
     {
-        m_etatClignotement="d";//eteindre le clignotement
+        if(m_etatClignotementEtEclErage=="a")
+
+            m_etatClignotementEtEclErage="d";//eteindre le clignotement
+        else
+            m_etatClignotementEtEclErage="a";
        // qDebug() << txtRecu << endl;
     }
 

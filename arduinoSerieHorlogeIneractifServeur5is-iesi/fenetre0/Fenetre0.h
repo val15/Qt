@@ -148,7 +148,7 @@ Q_OBJECT
     QString m_chemin;
     QString m_modeDAffichage;
     QString m_etindreAlrme;
-    QString m_etatClignotement;//a ou d
+    QString m_etatClignotementEtEclErage;//a ou d
     QString m_etatVitesse;
     QString m_etatEspace;
     QString m_peutDEspace;
