@@ -289,7 +289,7 @@ void MaFenetre::deconnectionClient()
     m_debit="0k";
    // m_serveur->envoyerATous("debit#0K");
    // m_serveurAndroid->envoyerATous("debit#0K");
-    m_arduinoCommande->envoyerText("toutEtindre");
+    //m_arduinoCommande->envoyerText("toutEtindre");
 }
 
 //pour arduinoSerieHorlogeIneractif
