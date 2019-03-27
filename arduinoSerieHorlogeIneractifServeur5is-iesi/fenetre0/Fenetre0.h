@@ -14,7 +14,7 @@
 #include "rdv.h"
 #include "serveurandroid.h"
 
-class MaFenetre : public QWidget // On h√©rite de QWidget (IMPORTANT)
+class MaFenetre : public QWidget // On hÈrite de QWidget (IMPORTANT)
 {
 Q_OBJECT
     public:
@@ -36,7 +36,7 @@ Q_OBJECT
     void repondreAuRequete(QStringList rqt,int indiceEnvoyeur,int typeDuSeveur);
     void exeAjouterEnregister(QStringList rqt);//"exe"correspend a l'execution du requete du client
     void exeAjouterEnregisterEtRelecture(QStringList rqt,int indiceEnvoyeur,int typeDuSeveur);
-    void exeModifierEvenement(QStringList rqt); 
+    void exeModifierEvenement(QStringList rqt);
     void exeModifierEvenementEtRelecture(QStringList rqt,int indiceEnvoyeur,int typeDuSeveur);
     void exeModifierEvenementEtRelectureEvenementDuJour(QStringList rqt,int indiceEnvoyeur,int typeDuSeveur);
     void exeSupprimer(QStringList rqt);
@@ -53,12 +53,12 @@ Q_OBJECT
 
     //pour l'horloge
     //QPushButton *m_bt_apropo;//on ceer un atribu de type QPushButton s'est un pointeur
-    QLineEdit *m_lePort; //Permet de choisir le port s√©rie
+    QLineEdit *m_lePort; //Permet de choisir le port sÈrie
 
     QComboBox *m_comboVitesse; // Permet de choisir la vitesse de communication
-    QPushButton *m_btnconnexion;// (D√©)Connecte la voie s√©rie (bouton ‚Äúcheckable‚Äù)
+    QPushButton *m_btnconnexion;// (DÈ)Connecte la voie sÈrie (bouton ?checkable?)
 
-    //pour les commades des Èlement de la maison
+    //pour les commades des ?lement de la maison
     QGridLayout *m_layoutCommande;
     QCheckBox *m_chbAllumAutomatque;
     QTimeEdit *m_tieAllumAutomatque;
@@ -93,14 +93,14 @@ Q_OBJECT
     QGridLayout *m_layoutHaut;
 
 
-    //pour la base de donnÈe
+    //pour la base de donn?e
     QString m_cheminEtNomDb;
 
 
 
 
 
-    //l'objet repr√©sentant le port
+    //l'objet reprÈsentant le port
     Arduino *m_arduinoAfficheur;
     Arduino *m_arduinoCommande;
     QString m_portArd0;

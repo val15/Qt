@@ -87,13 +87,18 @@ void ServeurAndroid::deconnexionClient()
     {
         if(!lstClient.isEmpty())
         {
-            QList<QTcpSocket *> ::iterator it;
+            /*QList<QTcpSocket *> ::iterator it;
             int i(0);
             for(it=lstClient.begin();it!=lstClient.end();++it)
             {
                 if(lstClient.at(i)== socket);
                     lstClient.removeAt(i);
                 i++;
+            }*/
+            for(int i=0;i<lstClient.count();i++)
+            {
+                if(lstClient.at(i)== socket);
+                    lstClient.removeAt(i);
             }
         }
 

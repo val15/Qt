@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Arduino.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Arduino.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.3.2. It"
+#error "This file was generated using the moc from 5.7.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,20 +20,21 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Arduino_t {
     QByteArrayData data[5];
-    char stringdata[37];
+    char stringdata0[37];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Arduino_t, stringdata) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Arduino_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_Arduino_t qt_meta_stringdata_Arduino = {
     {
-QT_MOC_LITERAL(0, 0, 7),
-QT_MOC_LITERAL(1, 8, 14),
-QT_MOC_LITERAL(2, 23, 0),
-QT_MOC_LITERAL(3, 24, 3),
-QT_MOC_LITERAL(4, 28, 8)
+QT_MOC_LITERAL(0, 0, 7), // "Arduino"
+QT_MOC_LITERAL(1, 8, 14), // "recevoirDonnee"
+QT_MOC_LITERAL(2, 23, 0), // ""
+QT_MOC_LITERAL(3, 24, 3), // "txt"
+QT_MOC_LITERAL(4, 28, 8) // "readData"
+
     },
     "Arduino\0recevoirDonnee\0\0txt\0readData"
 };
@@ -71,6 +72,7 @@ void Arduino::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Arduino *_t = static_cast<Arduino *>(_o);
+        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->recevoirDonnee((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->readData(); break;
@@ -83,6 +85,7 @@ void Arduino::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
             typedef void (Arduino::*_t)(QString );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Arduino::recevoirDonnee)) {
                 *result = 0;
+                return;
             }
         }
     }
@@ -90,7 +93,7 @@ void Arduino::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
 
 const QMetaObject Arduino::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_Arduino.data,
-      qt_meta_data_Arduino,  qt_static_metacall, 0, 0}
+      qt_meta_data_Arduino,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -101,8 +104,8 @@ const QMetaObject *Arduino::metaObject() const
 
 void *Arduino::qt_metacast(const char *_clname)
 {
-    if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_Arduino.stringdata))
+    if (!_clname) return Q_NULLPTR;
+    if (!strcmp(_clname, qt_meta_stringdata_Arduino.stringdata0))
         return static_cast<void*>(const_cast< Arduino*>(this));
     return QObject::qt_metacast(_clname);
 }
@@ -127,7 +130,7 @@ int Arduino::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void Arduino::recevoirDonnee(QString _t1)
 {
-    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

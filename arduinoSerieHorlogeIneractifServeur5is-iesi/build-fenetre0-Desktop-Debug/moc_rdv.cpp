@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'rdv.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'rdv.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.3.2. It"
+#error "This file was generated using the moc from 5.7.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,20 +20,21 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Rdv_t {
     QByteArrayData data[5];
-    char stringdata[36];
+    char stringdata0[36];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Rdv_t, stringdata) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Rdv_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_Rdv_t qt_meta_stringdata_Rdv = {
     {
-QT_MOC_LITERAL(0, 0, 3),
-QT_MOC_LITERAL(1, 4, 9),
-QT_MOC_LITERAL(2, 14, 0),
-QT_MOC_LITERAL(3, 15, 9),
-QT_MOC_LITERAL(4, 25, 10)
+QT_MOC_LITERAL(0, 0, 3), // "Rdv"
+QT_MOC_LITERAL(1, 4, 9), // "lireListe"
+QT_MOC_LITERAL(2, 14, 0), // ""
+QT_MOC_LITERAL(3, 15, 9), // "supprimer"
+QT_MOC_LITERAL(4, 25, 10) // "enregister"
+
     },
     "Rdv\0lireListe\0\0supprimer\0enregister"
 };
@@ -73,6 +74,7 @@ void Rdv::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Rdv *_t = static_cast<Rdv *>(_o);
+        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->lireListe(); break;
         case 1: _t->supprimer(); break;
@@ -86,6 +88,7 @@ void Rdv::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
             typedef void (Rdv::*_t)();
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Rdv::lireListe)) {
                 *result = 0;
+                return;
             }
         }
     }
@@ -94,7 +97,7 @@ void Rdv::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
 
 const QMetaObject Rdv::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_Rdv.data,
-      qt_meta_data_Rdv,  qt_static_metacall, 0, 0}
+      qt_meta_data_Rdv,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -105,8 +108,8 @@ const QMetaObject *Rdv::metaObject() const
 
 void *Rdv::qt_metacast(const char *_clname)
 {
-    if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_Rdv.stringdata))
+    if (!_clname) return Q_NULLPTR;
+    if (!strcmp(_clname, qt_meta_stringdata_Rdv.stringdata0))
         return static_cast<void*>(const_cast< Rdv*>(this));
     return QWidget::qt_metacast(_clname);
 }
@@ -131,6 +134,6 @@ int Rdv::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void Rdv::lireListe()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }
 QT_END_MOC_NAMESPACE

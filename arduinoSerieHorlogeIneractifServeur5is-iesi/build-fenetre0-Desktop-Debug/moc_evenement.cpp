@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'evenement.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'evenement.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.3.2. It"
+#error "This file was generated using the moc from 5.7.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,20 +20,21 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Evenement_t {
     QByteArrayData data[5];
-    char stringdata[42];
+    char stringdata0[42];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Evenement_t, stringdata) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Evenement_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_Evenement_t qt_meta_stringdata_Evenement = {
     {
-QT_MOC_LITERAL(0, 0, 9),
-QT_MOC_LITERAL(1, 10, 9),
-QT_MOC_LITERAL(2, 20, 0),
-QT_MOC_LITERAL(3, 21, 9),
-QT_MOC_LITERAL(4, 31, 10)
+QT_MOC_LITERAL(0, 0, 9), // "Evenement"
+QT_MOC_LITERAL(1, 10, 9), // "lireListe"
+QT_MOC_LITERAL(2, 20, 0), // ""
+QT_MOC_LITERAL(3, 21, 9), // "supprimer"
+QT_MOC_LITERAL(4, 31, 10) // "enregister"
+
     },
     "Evenement\0lireListe\0\0supprimer\0"
     "enregister"
@@ -74,6 +75,7 @@ void Evenement::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         Evenement *_t = static_cast<Evenement *>(_o);
+        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->lireListe(); break;
         case 1: _t->supprimer(); break;
@@ -87,6 +89,7 @@ void Evenement::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             typedef void (Evenement::*_t)();
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Evenement::lireListe)) {
                 *result = 0;
+                return;
             }
         }
     }
@@ -95,7 +98,7 @@ void Evenement::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
 
 const QMetaObject Evenement::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_Evenement.data,
-      qt_meta_data_Evenement,  qt_static_metacall, 0, 0}
+      qt_meta_data_Evenement,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -106,8 +109,8 @@ const QMetaObject *Evenement::metaObject() const
 
 void *Evenement::qt_metacast(const char *_clname)
 {
-    if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_Evenement.stringdata))
+    if (!_clname) return Q_NULLPTR;
+    if (!strcmp(_clname, qt_meta_stringdata_Evenement.stringdata0))
         return static_cast<void*>(const_cast< Evenement*>(this));
     return QWidget::qt_metacast(_clname);
 }
@@ -132,6 +135,6 @@ int Evenement::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void Evenement::lireListe()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }
 QT_END_MOC_NAMESPACE

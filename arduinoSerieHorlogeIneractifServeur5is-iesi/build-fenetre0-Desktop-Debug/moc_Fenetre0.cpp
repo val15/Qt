@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Fenetre0.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Fenetre0.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.3.2. It"
+#error "This file was generated using the moc from 5.7.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,52 +20,53 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MaFenetre_t {
     QByteArrayData data[37];
-    char stringdata[642];
+    char stringdata0[642];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_MaFenetre_t, stringdata) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_MaFenetre_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_MaFenetre_t qt_meta_stringdata_MaFenetre = {
     {
-QT_MOC_LITERAL(0, 0, 9),
-QT_MOC_LITERAL(1, 10, 31),
-QT_MOC_LITERAL(2, 42, 0),
-QT_MOC_LITERAL(3, 43, 4),
-QT_MOC_LITERAL(4, 48, 5),
-QT_MOC_LITERAL(5, 54, 35),
-QT_MOC_LITERAL(6, 90, 14),
-QT_MOC_LITERAL(7, 105, 12),
-QT_MOC_LITERAL(8, 118, 40),
-QT_MOC_LITERAL(9, 159, 26),
-QT_MOC_LITERAL(10, 186, 4),
-QT_MOC_LITERAL(11, 191, 29),
-QT_MOC_LITERAL(12, 221, 36),
-QT_MOC_LITERAL(13, 258, 23),
-QT_MOC_LITERAL(14, 282, 16),
-QT_MOC_LITERAL(15, 299, 22),
-QT_MOC_LITERAL(16, 322, 5),
-QT_MOC_LITERAL(17, 328, 17),
-QT_MOC_LITERAL(18, 346, 10),
-QT_MOC_LITERAL(19, 357, 4),
-QT_MOC_LITERAL(20, 362, 15),
-QT_MOC_LITERAL(21, 378, 27),
-QT_MOC_LITERAL(22, 406, 27),
-QT_MOC_LITERAL(23, 434, 11),
-QT_MOC_LITERAL(24, 446, 7),
-QT_MOC_LITERAL(25, 454, 26),
-QT_MOC_LITERAL(26, 481, 20),
-QT_MOC_LITERAL(27, 502, 22),
-QT_MOC_LITERAL(28, 525, 14),
-QT_MOC_LITERAL(29, 540, 20),
-QT_MOC_LITERAL(30, 561, 3),
-QT_MOC_LITERAL(31, 565, 18),
-QT_MOC_LITERAL(32, 584, 11),
-QT_MOC_LITERAL(33, 596, 15),
-QT_MOC_LITERAL(34, 612, 3),
-QT_MOC_LITERAL(35, 616, 16),
-QT_MOC_LITERAL(36, 633, 8)
+QT_MOC_LITERAL(0, 0, 9), // "MaFenetre"
+QT_MOC_LITERAL(1, 10, 31), // "lectureDesDatesImportantsDuMois"
+QT_MOC_LITERAL(2, 42, 0), // ""
+QT_MOC_LITERAL(3, 43, 4), // "year"
+QT_MOC_LITERAL(4, 48, 5), // "month"
+QT_MOC_LITERAL(5, 54, 35), // "repLectureDesDatesImportantes..."
+QT_MOC_LITERAL(6, 90, 14), // "indiceEnvoyeur"
+QT_MOC_LITERAL(7, 105, 12), // "typeDuSeveur"
+QT_MOC_LITERAL(8, 118, 40), // "repLectureDesDatesImportantes..."
+QT_MOC_LITERAL(9, 159, 26), // "lectureDesEvenementsDuJour"
+QT_MOC_LITERAL(10, 186, 4), // "date"
+QT_MOC_LITERAL(11, 191, 29), // "repLectureDesEvenementsDuJour"
+QT_MOC_LITERAL(12, 221, 36), // "repLectureDesEvenementsDuJour..."
+QT_MOC_LITERAL(13, 258, 23), // "repLectureDesEvenements"
+QT_MOC_LITERAL(14, 282, 16), // "ajouterEvenement"
+QT_MOC_LITERAL(15, 299, 22), // "selectionTypeEvenement"
+QT_MOC_LITERAL(16, 322, 5), // "texte"
+QT_MOC_LITERAL(17, 328, 17), // "ajouterEnregister"
+QT_MOC_LITERAL(18, 346, 10), // "connection"
+QT_MOC_LITERAL(19, 357, 4), // "temp"
+QT_MOC_LITERAL(20, 362, 15), // "gererCalendrier"
+QT_MOC_LITERAL(21, 378, 27), // "lireEvenementDuJourEtProch1"
+QT_MOC_LITERAL(22, 406, 27), // "actiVOuDesactiVClignotement"
+QT_MOC_LITERAL(23, 434, 11), // "setRecepton"
+QT_MOC_LITERAL(24, 446, 7), // "txtRecu"
+QT_MOC_LITERAL(25, 454, 26), // "desativerActiverAllumeAuto"
+QT_MOC_LITERAL(26, 481, 20), // "actiVOueteindrePrise"
+QT_MOC_LITERAL(27, 502, 22), // "allumerOuEteindreLumiR"
+QT_MOC_LITERAL(28, 525, 14), // "eteindreAlarme"
+QT_MOC_LITERAL(29, 540, 20), // "traiterMessagServeur"
+QT_MOC_LITERAL(30, 561, 3), // "msg"
+QT_MOC_LITERAL(31, 565, 18), // "deconnectionClient"
+QT_MOC_LITERAL(32, 584, 11), // "ecrirConfig"
+QT_MOC_LITERAL(33, 596, 15), // "exeEcrireConfig"
+QT_MOC_LITERAL(34, 612, 3), // "rqt"
+QT_MOC_LITERAL(35, 616, 16), // "repLectureConfig"
+QT_MOC_LITERAL(36, 633, 8) // "miseMA38"
+
     },
     "MaFenetre\0lectureDesDatesImportantsDuMois\0"
     "\0year\0month\0repLectureDesDatesImportantesDuMois\0"
@@ -168,6 +169,7 @@ void MaFenetre::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         MaFenetre *_t = static_cast<MaFenetre *>(_o);
+        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->lectureDesDatesImportantsDuMois((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 1: _t->repLectureDesDatesImportantesDuMois((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
@@ -204,7 +206,7 @@ void MaFenetre::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
 
 const QMetaObject MaFenetre::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_MaFenetre.data,
-      qt_meta_data_MaFenetre,  qt_static_metacall, 0, 0}
+      qt_meta_data_MaFenetre,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -215,8 +217,8 @@ const QMetaObject *MaFenetre::metaObject() const
 
 void *MaFenetre::qt_metacast(const char *_clname)
 {
-    if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_MaFenetre.stringdata))
+    if (!_clname) return Q_NULLPTR;
+    if (!strcmp(_clname, qt_meta_stringdata_MaFenetre.stringdata0))
         return static_cast<void*>(const_cast< MaFenetre*>(this));
     return QWidget::qt_metacast(_clname);
 }
